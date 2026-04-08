@@ -1,0 +1,86 @@
+{
+  "rental_top_features": [
+    {
+      "feature": "carpet_area_sqft",
+      "importance": 4658.09482197534
+    },
+    {
+      "feature": "locality_tier",
+      "importance": 3895.328794076124
+    },
+    {
+      "feature": "maintenance_charges",
+      "importance": 2091.578798060993
+    },
+    {
+      "feature": "ac_units",
+      "importance": 1778.4807516922447
+    },
+    {
+      "feature": "super_built_up_area_sqft",
+      "importance": 1724.5755569826408
+    },
+    {
+      "feature": "furnishing_status_encoded",
+      "importance": 1211.0292705884474
+    },
+    {
+      "feature": "building_age_years",
+      "importance": 640.8020490175372
+    },
+    {
+      "feature": "price_per_sqft",
+      "importance": 636.7783501467766
+    },
+    {
+      "feature": "area_per_bhk",
+      "importance": 488.6252283327622
+    },
+    {
+      "feature": "distance_to_hospital_km",
+      "importance": 418.98306661647246
+    }
+  ],
+  "purchase_top_features": [
+    {
+      "feature": "price_per_sqft",
+      "importance": 2532250.669034984
+    },
+    {
+      "feature": "carpet_area_sqft",
+      "importance": 2126014.555480325
+    },
+    {
+      "feature": "maintenance_charges",
+      "importance": 323610.94935307425
+    },
+    {
+      "feature": "super_built_up_area_sqft",
+      "importance": 227377.19786374175
+    },
+    {
+      "feature": "ac_units",
+      "importance": 150719.7791593643
+    },
+    {
+      "feature": "locality_tier",
+      "importance": 101796.02008947404
+    },
+    {
+      "feature": "area_per_bhk",
+      "importance": 49207.43161198462
+    },
+    {
+      "feature": "bhk_number",
+      "importance": 23303.320565420152
+    },
+    {
+      "feature": "distance_to_it_park_km",
+      "importance": 19842.824409745885
+    },
+    {
+      "feature": "distance_to_metro_km",
+      "importance": 18619.56279324672
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "target": "rental_price",
+  "best_model": "LGBMRegressor",
+  "comparison_table": [
+    {
+      "model": "LGBMRegressor",
+      "cv_rmse_mean": 6517.1945,
+      "cv_mae_mean": 5032.9752,
+      "cv_r2_mean": 0.7694,
+      "test_rmse": 6144.4551,
+      "test_mae": 4623.9802,
+      "test_r2": 0.801
+    },
+    {
+      "model": "XGBRegressor",
+      "cv_rmse_mean": 6453.6426,
+      "cv_mae_mean": 4921.0753,
+      "cv_r2_mean": 0.7742,
+      "test_rmse": 6420.3246,
+      "test_mae": 4785.3873,
+      "test_r2": 0.7827
+    },
+    {
+      "model": "RandomForestRegressor",
+      "cv_rmse_mean": 6662.2782,
+      "cv_mae_mean": 5116.3522,
+      "cv_r2_mean": 0.7602,
+      "test_rmse": 6688.3262,
+      "test_mae": 4982.8117,
+      "test_r2": 0.7642
+    },
+    {
+      "model": "LinearRegression",
+      "cv_rmse_mean": 6518.4586,
+      "cv_mae_mean": 5103.998,
+      "cv_r2_mean": 0.7711,
+      "test_rmse": 7067.5775,
+      "test_mae": 5469.8442,
+      "test_r2": 0.7367
+    }
+  ],
+  "top_features": [
+    {
+      "feature": "maintenance_charges",
+      "importance": 781
+    },
+    {
+      "feature": "price_per_sqft",
+      "importance": 758
+    },
+    {
+      "feature": "carpet_area_sqft",
+      "importance": 742
+    },
+    {
+      "feature": "super_built_up_area_sqft",
+      "importance": 617
+    },
+    {
+      "feature": "distance_to_hospital_km",
+      "importance": 563
+    },
+    {
+      "feature": "connectivity_score",
+      "importance": 555
+    },
+    {
+      "feature": "area_per_bhk",
+      "importance": 535
+    },
+    {
+      "feature": "days_since_listed",
+      "importance": 514
+    },
+    {
+      "feature": "distance_to_school_km",
+      "importance": 511
+    },
+    {
+      "feature": "floor_ratio",
+      "importance": 470
+    },
+    {
+      "feature": "distance_to_metro_km",
+      "importance": 464
+    },
+    {
+      "feature": "distance_to_it_park_km",
+      "importance": 441
+    },
+    {
+      "feature": "building_age_years",
+      "importance": 356
+    },
+    {
+      "feature": "total_floors",
+      "importance": 235
+    },
+    {
+      "feature": "locality_tier",
+      "importance": 208
+    }
+  ]
+}

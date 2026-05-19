@@ -7,6 +7,9 @@ An end-to-end B.Tech AIML project for analyzing Pune residential real estate and
 
 The project includes data ingestion scaffolding, listing-style sample data for local experimentation, data cleaning, EDA, feature engineering, dual-model training, SHAP explainability, and a Streamlit dashboard.
 
+live demo: https://pune-realestate-price-prediction-6aht3cp9xuykcmxrddnwjq.streamlit.app/
+
+
 ## Project Structure
 
 ```text

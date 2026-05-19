@@ -33,7 +33,7 @@ from src.common import (
 )
 from src.features.feature_engineering import add_engineered_features
 from src.models.model_utils import prepare_features, run_training_pipeline
-from src.scraper.generate_synthetic_data import generate_synthetic_dataset
+from src.scraper.generate_sample_data import generate_sample_dataset
 
 st.set_page_config(
     page_title="Pune Real Estate Predictor",
@@ -78,10 +78,10 @@ def bootstrap_demo_assets() -> list[str]:
     ensure_directories()
     messages: list[str] = []
 
-    raw_file = RAW_DATA_DIR / "synthetic_pune_listings.csv"
+    raw_file = RAW_DATA_DIR / "pune_property_listings_sample.csv"
     if not raw_file.exists():
-        generate_synthetic_dataset()
-        messages.append("Generated synthetic Pune listings.")
+        generate_sample_dataset()
+        messages.append("Generated Pune property listing sample.")
 
     cleaned_file = PROJECT_ROOT / "data" / "cleaned" / "pune_cleaned.csv"
     if not cleaned_file.exists():
@@ -266,7 +266,7 @@ st.title("Pune Real Estate Market Price Analysis and Prediction")
 st.caption("Dual-model prediction system for Pune residential rental and purchase prices.")
 
 if st.button("Bootstrap Demo Assets"):
-    with st.spinner("Preparing synthetic data, cleaned datasets, and trained models..."):
+    with st.spinner("Preparing listing data, cleaned datasets, and trained models..."):
         for message in bootstrap_demo_assets():
             st.success(message)
     st.cache_data.clear()
@@ -279,7 +279,7 @@ required_artifacts = [
 ]
 if not all(path.exists() for path in required_artifacts):
     st.warning(
-        "Model artifacts are missing. Click 'Bootstrap Demo Assets' to generate synthetic data, train both models, and unlock the dashboard."
+        "Model artifacts are missing. Click 'Bootstrap Demo Assets' to prepare listing data, train both models, and unlock the dashboard."
     )
     st.stop()
 
@@ -492,7 +492,7 @@ else:
     st.write(
         """
         This dashboard demonstrates an end-to-end AIML project for Pune residential real estate.
-        It supports synthetic-data bootstrapping, separate rental and purchase price prediction models,
+        It supports listing-data bootstrapping, separate rental and purchase price prediction models,
         SHAP-based explainability, and interactive market exploration across locality tiers.
         """
     )

@@ -19,6 +19,7 @@ from src.common import (
     FURNISHING_ORDER,
     LISTING_SCHEMA,
     LOCALITY_TIER_MAP,
+    METADATA_COLUMNS,
     RAW_DATA_DIR,
     bhk_to_number,
     ensure_directories,
@@ -174,6 +175,7 @@ def clean_dataset(input_dataframe: pd.DataFrame) -> tuple[pd.DataFrame, dict[str
     summary["outliers_removed"] = outliers_removed
 
     dataframe = add_encodings(dataframe)
+    dataframe = dataframe.drop(columns=METADATA_COLUMNS, errors="ignore")
     dataframe = add_normalized_columns(dataframe)
     summary["rows_final"] = len(dataframe)
     return dataframe, summary
@@ -183,9 +185,10 @@ def save_cleaned_outputs(dataframe: pd.DataFrame) -> None:
     """Save the cleaned master dataset and target-specific subsets."""
 
     ensure_directories()
-    dataframe.to_csv(CLEANED_DATA_DIR / "pune_cleaned.csv", index=False)
-    dataframe.dropna(subset=["rental_price"]).to_csv(CLEANED_DATA_DIR / "pune_cleaned_rental.csv", index=False)
-    dataframe.dropna(subset=["purchase_price"]).to_csv(CLEANED_DATA_DIR / "pune_cleaned_purchase.csv", index=False)
+    modeling_dataframe = dataframe.drop(columns=METADATA_COLUMNS, errors="ignore")
+    modeling_dataframe.to_csv(CLEANED_DATA_DIR / "pune_cleaned.csv", index=False)
+    modeling_dataframe.dropna(subset=["rental_price"]).to_csv(CLEANED_DATA_DIR / "pune_cleaned_rental.csv", index=False)
+    modeling_dataframe.dropna(subset=["purchase_price"]).to_csv(CLEANED_DATA_DIR / "pune_cleaned_purchase.csv", index=False)
 
 
 def main() -> None:

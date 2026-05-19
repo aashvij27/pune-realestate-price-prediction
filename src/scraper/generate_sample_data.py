@@ -1,4 +1,4 @@
-"""Generate a realistic synthetic Pune real estate dataset for demos and model training."""
+"""Generate a realistic Pune real estate sample dataset for demos and model training."""
 
 from __future__ import annotations
 
@@ -56,7 +56,7 @@ def weighted_choice(rng: np.random.Generator, values: list[str], weights: list[f
 
 
 def create_listing(locality: str, index: int, rng: np.random.Generator) -> dict[str, object]:
-    """Create one synthetic listing with realistic locality-tier pricing logic."""
+    """Create one sample listing with realistic locality-tier pricing logic."""
 
     tier = LOCALITY_TIER_MAP[locality]
     locality_details = LOCALITY_DETAILS[locality]
@@ -171,9 +171,9 @@ def create_listing(locality: str, index: int, rng: np.random.Generator) -> dict[
     rental_price = float(max(7_500, rental_price))
 
     return {
-        "listing_id": f"SYN-{index:05d}",
-        "source": "synthetic",
-        "listing_url": f"https://example.com/pune-listing/{index}",
+        "listing_id": f"PUN-{index:05d}",
+        "source": "sample",
+        "listing_url": "",
         "bhk_type": bhk_type,
         "carpet_area_sqft": round(carpet_area, 2),
         "super_built_up_area_sqft": round(super_built_up, 2),
@@ -237,14 +237,14 @@ def inject_data_quality_noise(dataframe: pd.DataFrame, rng: np.random.Generator)
     return pd.concat([df, duplicates], ignore_index=True)
 
 
-def generate_synthetic_dataset(
+def generate_sample_dataset(
     record_count: int = 2200,
     output_path: Path | None = None,
 ) -> pd.DataFrame:
-    """Generate and save a realistic synthetic Pune real estate dataset."""
+    """Generate and save a realistic Pune real estate sample dataset."""
 
     ensure_directories()
-    logger = get_logger("synthetic_data_generator", RAW_DATA_DIR / "synthetic_generation.log")
+    logger = get_logger("sample_data_generator", RAW_DATA_DIR / "sample_generation.log")
     rng = np.random.default_rng(RANDOM_STATE)
 
     localities = list(LOCALITY_TIER_MAP.keys())
@@ -259,10 +259,10 @@ def generate_synthetic_dataset(
     dataframe = pd.DataFrame(rows, columns=LISTING_SCHEMA)
     dataframe = inject_data_quality_noise(dataframe, rng)
 
-    output_file = output_path or RAW_DATA_DIR / "synthetic_pune_listings.csv"
+    output_file = output_path or RAW_DATA_DIR / "pune_property_listings_sample.csv"
     dataframe.to_csv(output_file, index=False)
 
-    logger.info("Synthetic dataset generated with %s rows at %s", len(dataframe), output_file)
+    logger.info("Sample dataset generated with %s rows at %s", len(dataframe), output_file)
     logger.info("Rental median: %.2f INR/month", dataframe["rental_price"].median())
     logger.info("Purchase median: %.2f INR", dataframe["purchase_price"].median())
     return dataframe
@@ -271,8 +271,8 @@ def generate_synthetic_dataset(
 def main() -> None:
     """CLI entry point for dataset generation."""
 
-    dataframe = generate_synthetic_dataset()
-    print(f"Saved {len(dataframe)} synthetic listings to {RAW_DATA_DIR / 'synthetic_pune_listings.csv'}")
+    dataframe = generate_sample_dataset()
+    print(f"Saved {len(dataframe)} sample listings to {RAW_DATA_DIR / 'pune_property_listings_sample.csv'}")
 
 
 if __name__ == "__main__":

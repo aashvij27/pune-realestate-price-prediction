@@ -68,6 +68,7 @@ BROKERAGE_TYPES = ["Owner", "Broker", "Builder"]
 SOCIETY_TYPES = ["Society", "Standalone"]
 
 TARGET_COLUMNS = ["rental_price", "purchase_price"]
+METADATA_COLUMNS = ["listing_id", "source", "listing_url"]
 
 LISTING_SCHEMA = [
     "listing_id",

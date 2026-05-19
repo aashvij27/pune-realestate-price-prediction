@@ -34,8 +34,7 @@ pune-realestate/
 
 ```text
 Raw data sources
-   |-- 99acres scraper
-   |-- synthetic fallback generator
+   |--  scraper
         |
         v
 data/raw/*.csv
@@ -90,7 +89,7 @@ The pipeline captures the requested property attributes across physical, furnish
 
 ## End-to-End Run Order
 
-### Step 1: Generate data
+### Step 1:  dataset
 
 Synthetic fallback:
 
@@ -207,8 +206,6 @@ The app also includes a `Bootstrap Demo Assets` button to generate synthetic dat
 
 - `src/scraper/scraper_99acres.py`
   99acres scraping scaffold with rate limiting, pagination, and logging.
-- `src/scraper/generate_synthetic_data.py`
-  Generates 2,200+ realistic Pune listings with tier-aware pricing distributions.
 - `src/cleaning/clean_data.py`
   Merges raw CSVs, removes sparse rows, fuzzy-deduplicates, imputes, handles outliers, and encodes features.
 - `src/features/feature_engineering.py`
@@ -224,17 +221,5 @@ The app also includes a `Bootstrap Demo Assets` button to generate synthetic dat
 - `src/dashboard/app.py`
   Streamlit dashboard for prediction, exploration, and model reporting.
 
-## Sample Screenshots Description
 
-- Home / Price Predictor:
-  A warm light-themed dashboard with a feature-input sidebar, dual prediction cards, and SHAP driver charts.
-- Market Explorer:
-  Interactive locality comparison charts, tier trend lines, and price distribution visualizations.
-- Model Info:
-  Performance comparison tables for rental and purchase models plus ranked feature importances.
 
-## Notes
-
-- All paths are relative and Windows-friendly.
-- `random_state=42` is used throughout for reproducibility.
-- The synthetic pipeline is the recommended fallback for final-year project demos when live scraping is blocked.
